@@ -5,15 +5,15 @@ export const MsalInstance = new msal.PublicClientApplication({
     protocolMode: msal.ProtocolMode.OIDC,
     authorityMetadata: JSON.stringify({
       authorization_endpoint:
-        "https://localhost/realms/demo/protocol/openid-connect/auth",
+        "https://localhost:8443/realms/demo/protocol/openid-connect/auth",
       token_endpoint:
-        "https://localhost/realms/demo/protocol/openid-connect/token",
-      issuer: "https://localhost/realms/demo",
+        "https://localhost:8443/realms/demo/protocol/openid-connect/token",
+      issuer: "https://localhost:8443/realms/demo",
       userinfo_endpoint:
-        "https://localhost/realms/demo/protocol/openid-connect/userinfo",
+        "https://localhost:8443/realms/demo/protocol/openid-connect/userinfo",
     }),
-    authority: "https://localhost/realms/demo",
+    authority: "https://localhost:8443/realms/demo",
     clientId: "demo",
-    knownAuthorities: ["https://localhost/realms/demo"],
+    knownAuthorities: ["https://localhost:8443/realms/demo"],
   },
 });
