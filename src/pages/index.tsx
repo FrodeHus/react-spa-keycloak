@@ -3,13 +3,34 @@ import {
   UnauthenticatedTemplate,
   useMsal,
 } from "@azure/msal-react";
+import { BlockList } from "net";
 import type { NextPage } from "next";
 import Head from "next/head";
+import { useState } from "react";
 import styles from "../styles/Home.module.css";
 
 const Home: NextPage = () => {
   const { instance, accounts } = useMsal();
+  const [accessToken, setAccessToken] = useState<string>();
   const name = accounts[0] && accounts[0].name;
+
+  function RequestAccessToken() {
+    const request = {
+      scopes: ["openid email profile"],
+      account: accounts[0],
+    };
+
+    instance
+      .acquireTokenSilent(request)
+      .then((response) => {
+        setAccessToken(response.accessToken);
+      })
+      .catch((e) => {
+        instance.acquireTokenPopup(request).then((response) => {
+          setAccessToken(response.accessToken);
+        });
+      });
+  }
 
   return (
     <div className={styles.container}>
@@ -32,7 +53,31 @@ const Home: NextPage = () => {
             </button>
           </UnauthenticatedTemplate>
           <AuthenticatedTemplate>
-            <p className={styles.description}>Good to see you, {name}</p>
+            <div>
+              <p className={styles.description}>Good to see you, {name}</p>
+              <div>
+                {accessToken ? (
+                  <div>
+                    <p>Access token acquired!</p>
+                    <code
+                      style={{
+                        width: "500px",
+                        display: "inline-block",
+                        wordBreak: "break-all",
+                      }}
+                    >
+                      {accessToken}
+                    </code>
+                  </div>
+                ) : (
+                  <div>
+                    <button onClick={RequestAccessToken}>
+                      Request access token
+                    </button>
+                  </div>
+                )}
+              </div>
+            </div>
           </AuthenticatedTemplate>
         </div>
       </main>
