@@ -21,3 +21,5 @@ To get Keycloak up and running: `docker-compose up -d`
 This also import a demo realm to get started.
 
 Login with `admin/admin` at <http://localhost:8080/admin>
+
+Run the webapp: `cd src && npm run dev`
