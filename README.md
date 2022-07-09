@@ -2,10 +2,6 @@
 
 Simple example of how to use MSAL with React to authenticate using Keycloak
 
-Run `docker-compose up`-d`to start Keycloak with a`demo` realm already created.
-
-Login with `admin/admin` at http://localhost:8080/admin
-
 ## Dev environment
 
 Because MSAL requires a HTTPS endpoint, it will not accept authenticating with Keyclock on regular HTTP.
@@ -21,3 +17,7 @@ openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout keycloak.key -out ke
 ```
 
 To get Keycloak up and running: `docker-compose up -d`
+
+This also import a demo realm to get started.
+
+Login with `admin/admin` at <http://localhost:8080/admin>
