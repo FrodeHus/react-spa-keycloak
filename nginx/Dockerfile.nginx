@@ -1,0 +1,5 @@
+FROM nginx:latest
+
+COPY nginx.conf /etc/nginx/nginx.conf
+COPY keycloak.crt /etc/ssl/certs/
+COPY keycloak.key /etc/ssl/private/
