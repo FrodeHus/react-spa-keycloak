@@ -458,6 +458,21 @@
       }
     ]
   },
+  "users":[
+	  {
+		  "username":"demo",
+		  "enabled":true,
+		  "credentials":[
+			  {
+				  "type":"password",
+				  "value":"demo"
+			  }
+		  ],
+		  "clientRoles":{
+			  "account":["manage-account"]
+		  }
+	  }
+  ],
   "clients": [
     {
       "id": "75a06647-71fd-4796-8a30-9495fdd73d50",
