@@ -2,6 +2,8 @@
 
 Simple example of how to use MSAL with React to authenticate using Keycloak
 
+[Blog post](https://www.frodehus.dev/add-privileged-identity-management-with-keycloak-using-azure-active-directory/)
+
 ## Dev environment
 
 Because MSAL requires a HTTPS endpoint, it will not accept authenticating with Keyclock on regular HTTP.
